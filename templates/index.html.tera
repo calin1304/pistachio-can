@@ -2,6 +2,20 @@
 
 {% block content %}
 
-<h1>Hi {{name}}</h1>
+<div id="main">
+    <div class="nav">
+        <h3>Pistachio Can</h3>
+    </div>
+
+{% if paste_id %}
+<p>Success: <a href="/{{ paste_id }}">{{ paste_id }}</a></p>
+{% endif %}
+
+<form action="/" method="post">
+    <textarea id="editor" name="editor"> </textarea>
+    <button type="submit">Create paste</button>
+</form>
+
+</div>
 
 {% endblock content %}

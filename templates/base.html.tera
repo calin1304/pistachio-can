@@ -4,9 +4,10 @@
     <head>
         <meta charset="utf-8" />
         <title>Pistachio Can</title>
+        <link rel="stylesheet" href="/static/styles.css" />
     </head>
 
-    <body>
+    <body >
         {% block content %}{% endblock content %}
     </body>
 </html>

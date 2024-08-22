@@ -1,0 +1,32 @@
+body {
+    background-color: #2e3440;
+    color: #eceff4;
+}
+a {
+    color: #eceff4;
+}
+
+#main {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+
+    padding: 2rem;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: #4c566a;
+}
+
+#editor {
+    display: block;
+    width: 50%;
+    min-width: 350px;
+    height: 300px;
+    margin-bottom: 1rem;
+}
+
+button {
+    background-color: #81a1c1;
+}
