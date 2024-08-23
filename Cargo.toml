@@ -9,6 +9,7 @@ edition = "2021"
 rocket = "0.5.1"
 rocket_contrib = "0.4.11"
 sha256 = "1.5.0"
+base64 = "0.22.1"
 
 [dependencies.rocket_dyn_templates]
 version = "0.2.0"

@@ -17,11 +17,14 @@ use std::fmt::Display;
 use std::fs::File;
 use std::io::Write;
 
+use base64::Engine;
+use base64::engine::{general_purpose};
+
 struct PasteId(String);
 
 impl PasteId {
     fn new(data: &str) -> Self {
-        PasteId(digest(data))
+        PasteId(general_purpose::STANDARD.encode(digest(data))[0..12].to_string())
     }
 }
 
@@ -53,10 +56,15 @@ struct PasteForm<'r> {
 async fn add_paste(form: Form<PasteForm<'_>>) -> Result<Template, std::io::Error> {
     let paste_id = PasteId::new(&form.editor);
     let prefix = &paste_id.0[0..2];
+    // FIXME: Don't error if directory already exists
     std::fs::create_dir(format!("uploads/{}", prefix))?;
     let filepath = format!("uploads/{}/{}", prefix, paste_id);
+    // FIXME: Don't error if file already exists
     let mut file = File::create(filepath)?;
     file.write_all(&form.editor.as_bytes())?;
+    // FIXME: Will render index with an additional message that operation was
+    // a success. The issue is that refreshing this index page resends the POST
+    // data.
     Ok(Template::render("index", context! { paste_id: paste_id.0 }))
 }
 
