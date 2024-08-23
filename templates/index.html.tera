@@ -4,17 +4,53 @@
 
 <div id="main">
     <div class="nav">
-        <h3>Pistachio Can</h3>
+        <h2>Pistachio Can <span class="text-muted">(Work in progress)</span></h2>
     </div>
 
 {% if paste_id %}
 <p>Success: <a href="/{{ paste_id }}">{{ paste_id }}</a></p>
 {% endif %}
 
-<form action="/" method="post">
-    <textarea id="editor" name="editor"> </textarea>
-    <button type="submit">Create paste</button>
-</form>
+<div style="display: flex; flex-direction: row">
+    <div style="min-width: 70%; padding-right: 2rem;">
+    <h3 style="border-bottom: 1px solid #888; padding-bottom:1ex">New paste</h3>
+    <form action="/" method="post">
+        <textarea id="editor" name="editor"> </textarea>
+        <!-- <div class="field">
+            <span>Title: </span>
+            <input type="text" placeholder="Name your text" name="title" />
+        </div>
+        -->
+        <button type="submit">Create paste</button>
+    </form>
+    </div>
+    <div>
+        <h3>About Pistachio Can</h3>
+        <p>
+            Welcome to Pistachio Can, your go-to destination for sharing text
+            and code snippets online. Whether you need to quickly share a block
+            of code, draft an idea, or simply store some notes, Pistachio Can
+            provides a clean, simple, and efficient platform to do so.
+        </p>
+        <p>
+            This is a simple personal project written with Rust with the aim
+            of learning more about web programming, APIs and web development
+            with Rust.
+        </p>
+        <p>
+            Features to be implemented include:
+        </p>
+            <ul>
+                <li>Expiration period for files</li>
+                <li>Responsive design</li>
+                <li>List of generated pastes</li>
+                <li>Client-side encryption</li>
+                <li>Themes & font options</li>
+                <li>User accounts</li>
+                <li>Open multiple files with tabs</li>
+            </ul>
+    </div>
+</div>
 
 </div>
 
