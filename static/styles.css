@@ -41,7 +41,7 @@ a {
 button {
     background-color: #81a1c1;
     padding: 1ex 1.5rem;
-    box-shadow: 1px 2px 8px #221111;
+    /* box-shadow: 1px 2px 8px #221111; */
 }
 
 .field {
@@ -55,4 +55,23 @@ button {
 .text-muted {
     opacity: .5;
     font-size: 1rem;
+}
+
+.notification {
+    border: 1px solid #a3be8c;
+    display: inline-block;
+    margin-bottom: 2ex;
+}
+.notification .title {
+    padding: 1ex .5rem;
+    font-size: 1.2rem;
+}
+.notification .message{
+    padding: .5ex .5rem;
+}
+
+.notification.success {
+    background-color: #637555;
+}
+.notification.success .title {
 }
