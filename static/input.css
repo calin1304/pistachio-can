@@ -8,7 +8,6 @@
 }
 
 html {
-    font-size: 16px;
 }
 body {
     color: #eceff4;
@@ -18,6 +17,12 @@ a {
     color: #eceff4;
     text-decoration: underline;
 }
+
+h1 { @apply text-4xl font-bold mb-6; }
+h2 { @apply text-3xl mb-3;}
+h3 { @apply text-2xl mb-2;}
+ul > li { @apply list-disc; }
+p { @apply mb-5; }
 
 #main {
     border: 1px solid #777;
@@ -62,17 +67,11 @@ button {
 .nav {
 }
 
-.text-muted {
-    opacity: .5;
-    font-size: 1rem;
-}
-
 .notification {
     margin-bottom: 2ex;
 }
 .notification .title {
     padding: 1ex .5rem;
-    font-size: 1.2rem;
 }
 .notification .message{
     padding: .5ex .5rem;

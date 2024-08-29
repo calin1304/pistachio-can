@@ -4,12 +4,13 @@
 
 <div id="main">
     <div class="nav">
-        <h2 class="text-xl font-bold">Pistachio Can <span class="text-gray-500">(Work in progress)</span></h2>
+        <h1 class="mt-4" style="margin-bottom: 0px;">Pistachio Can </h1>
+        <h2 class="text-gray-500">(Work in progress)</h2>
     </div>
 
 <div class="flex flex-row">
     <div class="pr-8" style="min-width: 70%">
-    <h3 class="font-lg pb-4" style="border-bottom: 1px solid #888">New paste</h3>
+    <h3 class="pb-4" style="border-bottom: 1px solid #888">New paste</h3>
     <div class="hidden notification success">
         <div class="message">
             <p><b>Success!</b> View your paste at <a target="_blank" id="paste-link"></a></p>
@@ -31,7 +32,7 @@
     </form>
     </div>
     <div>
-        <h3>About Pistachio Can</h3>
+        <h3 class="text-3xl font-bold">About Pistachio Can</h3>
         <p>
             Welcome to Pistachio Can, your go-to destination for sharing text
             and code snippets online. Whether you need to quickly share a block
@@ -43,18 +44,18 @@
             of learning more about web programming, APIs and web development
             with Rust.
         </p>
-        <p>
+        <p style="margin-bottom: 0px;">
             Features to be implemented include:
         </p>
-            <ul>
-                <li>Expiration period for files</li>
-                <li>Responsive design</li>
-                <li>List of generated pastes</li>
-                <li>Client-side encryption</li>
-                <li>Themes & font options</li>
-                <li>User accounts</li>
-                <li>Open multiple files with tabs</li>
-            </ul>
+        <ul>
+            <li>Expiration period for files</li>
+            <li>Responsive design</li>
+            <li>List of generated pastes</li>
+            <li>Client-side encryption</li>
+            <li>Themes and font options</li>
+            <li>User accounts</li>
+            <li>Open multiple files with tabs</li>
+        </ul>
     </div>
 </div>
 
