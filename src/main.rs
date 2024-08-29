@@ -6,6 +6,7 @@
 use rocket::{Rocket, Build};
 use rocket::request::FromParam;
 use rocket::response::{content};
+use rocket::response::status::{NotFound};
 use rocket::form::{Form};
 use rocket::fs::FileServer;
 use rocket_dyn_templates::Template;
@@ -69,10 +70,12 @@ async fn add_paste(form: Form<PasteForm<'_>>) -> Result<String, std::io::Error> 
 }
 
 #[get("/<id>")]
-async fn get_by_id(id: PasteId) -> Option<content::RawText<File>> {
+async fn get_by_id(id: PasteId) -> Result<content::RawText<File>, NotFound<String>> {
     let prefix = &id.0[0..2];
     let filename = format!("uploads/{}/{}", prefix, id);
-    File::open(&filename).map(|f| content::RawText(f)).ok()
+    File::open(&filename)
+        .map(|f| content::RawText(f))
+        .map_err(|_| NotFound(format!("Something went wrong when trying to open file {}", filename)))
 }
 
 #[launch]
