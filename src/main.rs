@@ -17,6 +17,7 @@ use std::fmt;
 use std::fmt::Display;
 use std::fs::File;
 use std::io::Write;
+use std::io;
 
 use base64::Engine;
 use base64::engine::{general_purpose};
@@ -54,19 +55,17 @@ struct PasteForm<'r> {
 }
 
 #[post("/", data="<form>")]
-async fn add_paste(form: Form<PasteForm<'_>>) -> Result<String, std::io::Error> {
+async fn add_paste(form: Form<PasteForm<'_>>) -> io::Result<String> {
     let paste_id = PasteId::new(&form.editor);
     let prefix = &paste_id.0[0..2];
-    // FIXME: Don't error if directory already exists
-    std::fs::create_dir(format!("uploads/{}", prefix))?;
+    // TODO: Ignore file already exists I/O errors but catch all others
+    let _ = std::fs::create_dir(format!("uploads/{}", prefix));
     let filepath = format!("uploads/{}/{}", prefix, paste_id);
-    // FIXME: Don't error if file already exists
-    let mut file = File::create(filepath)?;
-    file.write_all(&form.editor.as_bytes())?;
-    // FIXME: Will render index with an additional message that operation was
-    // a success. The issue is that refreshing this index page resends the POST
-    // data.
-    Ok(paste_id.0)
+    match File::create(filepath) {
+        Ok(mut file) => file.write_all(&form.editor.as_bytes())?,
+        Err(_) => ()
+    };
+     io::Result::Ok(paste_id.0)
 }
 
 #[get("/<id>")]
