@@ -53,7 +53,7 @@ struct PasteForm<'r> {
 }
 
 #[post("/", data="<form>")]
-async fn add_paste(form: Form<PasteForm<'_>>) -> Result<Template, std::io::Error> {
+async fn add_paste(form: Form<PasteForm<'_>>) -> Result<String, std::io::Error> {
     let paste_id = PasteId::new(&form.editor);
     let prefix = &paste_id.0[0..2];
     // FIXME: Don't error if directory already exists
@@ -65,7 +65,7 @@ async fn add_paste(form: Form<PasteForm<'_>>) -> Result<Template, std::io::Error
     // FIXME: Will render index with an additional message that operation was
     // a success. The issue is that refreshing this index page resends the POST
     // data.
-    Ok(Template::render("index", context! { paste_id: paste_id.0 }))
+    Ok(paste_id.0)
 }
 
 #[get("/<id>")]
